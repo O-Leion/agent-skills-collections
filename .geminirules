@@ -1,0 +1,12 @@
+# Agent Skills Collections - Project Rules
+
+このプロジェクトは Expert Configuration を採用しています。
+詳細なルールは以下を参照してください：
+
+- **プロジェクトコンテキスト**: `./GEMINI.md`
+- **プロジェクトルール**: `./.agent/rules/`
+  - `skill-structure.md` — Skill構成・品質基準
+  - `coding-style.md` — コーディング規約・命名規則
+- **ワークフロー**: `./.agent/workflows/`
+  - `create-skill.md` — 新規Skill作成手順
+- **グローバルルール**: `~/.gemini/GEMINI.md`（出力言語、説明方針、全体方針）

@@ -1,0 +1,10 @@
+# Antigravity に読み込ませない対象
+.git/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+node_modules/
+dist/
+build/
+.DS_Store
