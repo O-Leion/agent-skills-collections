@@ -15,7 +15,7 @@ AIエージェント向けの再利用可能なSkills（スキル）集です。
 > 現在、Skillはまだ登録されていません。今後追加予定です。
 
 <!-- 以下のフォーマットでSkillを追加してください：
-| [skill-name](./skill-name/) | 説明 | `tag1`, `tag2` |
+| [skill-name](./collections/skill-name/) | 説明 | `tag1`, `tag2` |
 -->
 
 | Skill         | 説明 | タグ |
@@ -57,17 +57,60 @@ tags:
 
 ## 使い方
 
+このリポジトリから使いたいSkillを選び、各エージェントの所定の場所にコピーして使用します。
+
 ### Antigravity
 
-Antigravityでは、Skillsフォルダがワークスペース内にあれば自動的に認識されます。`SKILL.md` の内容がエージェントのコンテキストとして利用されます。
+Skillフォルダをワークスペースルートまたは `.agent/skills/` 配下にコピーします。
+`SKILL.md` がエージェントのコンテキストとして自動で認識されます。
+
+```
+your-project/
+├── .agent/
+│   └── skills/
+│       └── skill-name/       ← collections/ からコピー
+│           └── SKILL.md
+└── src/
+```
 
 ### RooCode
 
-RooCodeでは、カスタムモードやワークフローとしてSkillを読み込むことができます。`SKILL.md` を参照してエージェントに指示を与えます。
+Skillフォルダを `.roo/skills/`（プロジェクト単位）または `~/.roo/skills/`（グローバル）にコピーします。
+RooCode v3.38.0 以降で、リクエストに応じてSkillが自動で読み込まれます。
+
+```
+your-project/
+├── .roo/
+│   └── skills/
+│       └── skill-name/       ← collections/ からコピー
+│           └── SKILL.md
+└── src/
+```
+
+グローバルに使いたい場合：
+
+```
+~/.roo/
+└── skills/
+    └── skill-name/           ← collections/ からコピー
+        └── SKILL.md
+```
 
 ### GitHub Copilot
 
-GitHub Copilotでは、Skillの内容をプロンプトやカスタムインストラクションに組み込んで使用できます。
+Skillの内容を `.github/copilot-instructions.md`（リポジトリ全体）に記述するか、
+`.github/instructions/` 配下にパス指定付きのインストラクションファイルとして配置します。
+
+```
+your-project/
+├── .github/
+│   ├── copilot-instructions.md    ← Skillの内容を転記（リポジトリ全体に適用）
+│   └── instructions/
+│       └── skill-name.instructions.md  ← パス指定で特定ファイルに適用
+└── src/
+```
+
+> **Note**: GitHub Copilot は `SKILL.md` 形式を直接認識しないため、内容を上記ファイルに転記してください。
 
 ## 主な技術スタック
 
@@ -81,7 +124,16 @@ MIT License
 
 ## 貢献方法
 
-1. 新しいSkillディレクトリを作成
-2. `SKILL.md` にメタデータと手順を記述
-3. 必要に応じてスクリプト・リファレンス・アセットを追加
-4. このREADMEのSkill一覧を更新
+1. `collections/` ディレクトリ内に、Skill名（kebab-case）のフォルダを作成する
+2. `SKILL.md` を作成し、YAMLフロントマターとスキルの説明・手順を記述する
+3. 必要に応じて `scripts/`, `references/`, `assets/` を追加する
+4. このREADMEのSkill一覧テーブルを更新する
+
+```
+collections/
+└── your-new-skill/
+    ├── SKILL.md              # 必須
+    ├── scripts/              # オプション
+    ├── references/           # オプション
+    └── assets/               # オプション
+```
