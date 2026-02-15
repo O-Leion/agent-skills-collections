@@ -17,9 +17,10 @@ AIエージェント向けの再利用可能なSkills（スキル）集です。
 | [skill-name](./collections/skill-name/) | 説明 | `tag1`, `tag2` |
 -->
 
-| Skill                                     | 説明                                      | タグ                          |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------- |
-| [connect_ssh](./collections/connect_ssh/) | .envの接続情報を使用してSSH接続を確立する | `ssh`, `remote`, `connection` |
+| Skill                                                           | 説明                                      | タグ                          |
+| --------------------------------------------------------------- | ----------------------------------------- | ----------------------------- |
+| [connect_ssh](./collections/connect_ssh/)                       | .envの接続情報を使用してSSH接続を確立する | `ssh`, `remote`, `connection` |
+| [python-static-analysis](./collections/python-static-analysis/) | flake8でPythonコードを静的解析し修正する  | `python`, `lint`, `flake8`    |
 
 ## ディレクトリ構成
 
